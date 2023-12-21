@@ -236,3 +236,25 @@ React.createElement("h2", {}, "me h2 tag"),
 //but this code i very complicated?this is why jsx is existwe well learn more about jsx after sometime .
 
 //part 5
+//does the
+order of this files will matter or not? if u write this file
+<script src="./App.js"></script>
+before link.
+<body>
+  <div id="root"></div>
+  <script src="./App.js"></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+</body>
+
+it will show error. so the order of this files will always be in sequence so
+always keep react after
+
+
+
