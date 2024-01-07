@@ -1,0 +1,120 @@
+/reat router
+
+import React, { useEffect } from "react";
+
+//1. how useEffect works
+
+//importing
+import { useState, useEffect } from "react";
+
+//useEffect call using two arguments
+// 1.CALLBACKL FUNCTION
+// 2.DEPENDENCY ARRAY
+
+//imp interview question when this useEffect is called?
+useEffect(() => {
+    console.log("useeffect called")
+}, []);
+
+-use Effect IS CALLED AFTER every time component renders but because we put dependencya rray it changes the behaviour (its not mendatory)
+
+//if no dependency array => useEffect is called on every render.
+//every time its called after every render 
+
+//if dependency array is empty = [] => useEffect is called on initial render(just ones) - not getting called again and again.
+
+//what if we put something on dependency array -> then useEffect is called everytime the dependncy inside and array is updated useEffect is called.
+
+
+When is useEffect called?
+No Dependency Array (useEffect(() => {...})):
+
+Called after every render.
+Empty Dependency Array (useEffect(() => {...}, [])):
+
+Called only once after the initial render (mounting phase).
+With Dependencies (useEffect(() => {...}, [dependency1, dependency2])):
+
+Called after every render if any dependency has changed.
+
+
+
+//part 2
+// useState imp points :
+
+1.never use useState outside of your component
+2.it is used for creating local state variables inside your functional component .
+3.try to call this hooks on the top.so u dont have lot of inconsitency in your ConvolverNode.apply
+4.never used your useState INSIDE A if else .this can create inconsitency in your program 
+5.never create inside for loop, and function .
+6.it meant to be created insdie the functional component on the top .  
+
+
+//PART 3 = REACT ROUTES 
+
+
+for this im using javascript library :
+https://reactrouter.com/en/main
+
+
+
+how to install this library inside our project 
+
+command :
+npm i react-router-dom 
+
+
+1.whenever we have to develope routes we have to create routing configuration 
+open our root componenet app.js 
+
+import {createBrowserRouter} from "react-router-dom";
+
+
+const appRouter = createBrowserRouter ([
+    {
+        path: "/",
+        //load my homepage 
+        element: <AppLayout />,
+    },
+
+    {
+        path:"/about",
+        element: <About />,
+
+    },
+
+    
+])
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<AppLayout />);
+
+//lets creat About us page 
+
+this is your task create about us component u can create about us page by your own u can add your resume there your choice and import it in app.js file 
+
+
+//now  I  have created our configuration now i need to provide this configuration to render it.for that i hvae one more component react dom this 
+// this RouterProvider will provide this routing configuration.
+
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+
+react router provides two component
+1.createBrowserRouter :
+This is the recommended router for all React Router web projects. It uses the DOM History API to update the URL and manage the history stack.
+2.<RouterProvider> :
+All data router objects are passed to this component to render your app and enable the rest of the data APIs.
+
+
+//earlier we just rendering the AppLayout directly.
+root.render(<AppLayout />);
+
+
+root.render(RouterProvider router={appRouter})
+
+
+//so now this will start working u can check by browsing /About. 
+
+
+// note: if u go to the react router documentation u'll se multiple routers over there but i personally suggest u to use the createBrowserRouter.
